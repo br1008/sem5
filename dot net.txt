@@ -1,0 +1,316 @@
+Design
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style2 {
+            height: 26px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <table class="auto-style1">
+            <tr>
+                <td>
+                    <asp:Label ID="Label1" runat="server" Text="Name"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtnm" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label2" runat="server" Text="Email"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtem" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label3" runat="server" Text="Gender"></asp:Label>
+                </td>
+                <td>
+                    <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+                        <asp:ListItem>Male</asp:ListItem>
+                        <asp:ListItem>Female</asp:ListItem>
+                    </asp:RadioButtonList>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label4" runat="server" Text="Hobby"></asp:Label>
+                </td>
+                <td>
+                    <asp:CheckBoxList ID="chkhb" runat="server">
+                        <asp:ListItem>Cricket</asp:ListItem>
+                        <asp:ListItem>Football</asp:ListItem>
+                        <asp:ListItem>Volleyball</asp:ListItem>
+                    </asp:CheckBoxList>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label5" runat="server" Text="Mobile no"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtmn" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:Label ID="Label6" runat="server" Text="Address"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="txtadd" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:Label ID="Label7" runat="server" Text="Image"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:FileUpload ID="FileUpload1" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" />
+                </td>
+                <td class="auto-style2">&nbsp;</td>
+            </tr>
+        </table>
+        <div>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnRowCommand="GridView1_RowCommand">
+                <Columns>
+                    <asp:TemplateField HeaderText="Id">
+                        <ItemTemplate>
+                            <asp:Label ID="Label8" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Name">
+                        <ItemTemplate>
+                            <asp:Label ID="Label9" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Email">
+                        <ItemTemplate>
+                            <asp:Label ID="Label10" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Gender">
+                        <ItemTemplate>
+                            <asp:Label ID="Label11" runat="server" Text='<%# Eval("Gender") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Hobby1">
+                        <ItemTemplate>
+                            <asp:Label ID="Label12" runat="server" Text='<%# Eval("Hobby1") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Hobby2">
+                        <ItemTemplate>
+                            <asp:Label ID="Label13" runat="server" Text='<%# Eval("Hobby2") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Hobby3">
+                        <ItemTemplate>
+                            <asp:Label ID="Label14" runat="server" Text='<%# Eval("Hobby3") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Mobile">
+                        <ItemTemplate>
+                            <asp:Label ID="Label15" runat="server" Text='<%# Eval("Mobile") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Address">
+                        <ItemTemplate>
+                            <asp:Label ID="Label16" runat="server" Text='<%# Eval("Address") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Image">
+                        <ItemTemplate>
+                            <asp:Image ID="Image1" runat="server" Height="100px" Width="100px" ImageUrl='<%# Eval("Image") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Edit">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="cmd_edt">Edit</asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Delete">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="cmd_det">Delete</asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <FooterStyle BackColor="#CCCCCC" />
+                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+                <RowStyle BackColor="White" />
+                <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#808080" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#383838" />
+            </asp:GridView>
+        </div>
+    </form>
+</body>
+</html>
+__________________________________________
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+namespace WebApplication1
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        string s = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Sem_6\Asp.net\Connectivity\A_2_tier\WebApplication1\WebApplication1\App_Data\Database1.mdf;Integrated Security=True";
+        SqlConnection con;
+        SqlCommand cmd;
+        SqlDataAdapter da;
+        DataSet ds;
+        string fnm, h1, h2, h3;
+        string[] hb = new string[3];
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            fillgrid();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if(Button1.Text=="Submit")
+            {
+                getcon();
+                imageupload();
+                hobby();
+                for(int i=0;i<1;i++)
+                {
+                    if(hb[i]=="Cricket")
+                    {
+                        h1 = "Cricket";
+                        i++;
+                    }
+                    else
+                    {
+                        h1 = "null";
+                        i++;
+                    }
+                    if(hb[i]=="Football")
+                    {
+                        h2 = "Football";
+                        i++;
+                    }
+                    else
+                    {
+                        h2 = "null";
+                        i++;
+                    }
+                    if(hb[i]=="Volleyball")
+                    {
+                        h3 = "Volleyball";
+                    }
+                    else
+                    {
+                        h3 = "null";
+                    }
+                }
+                cmd = new SqlCommand("insert into emp (Name,Email,Gender,Hobby1,Hobby2,Hobby3,Mobile,Address,Image) values('"+txtnm.Text+"','"+txtem.Text+"','"+RadioButtonList1.SelectedValue+"','"+h1+"','"+h2+"','"+h3+"','"+txtmn.Text+"','"+txtadd.Text+"','"+fnm+"')", con);
+                cmd.ExecuteNonQuery();
+                fillgrid();
+            }
+        }
+
+        public void getcon()
+        {
+            con = new SqlConnection(s);
+            con.Open();
+        }
+        void imageupload()
+        {
+            fnm = "Image/" + FileUpload1.FileName;
+            FileUpload1.SaveAs(Server.MapPath(fnm));
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName=="cmd_edt")
+            {
+                getcon();
+                int id = Convert.ToInt32(e.CommandArgument);
+                ViewState["Id"] = id;
+                Button1.Text = "Update";
+                select(id);
+                filltext();
+            }
+        }
+
+        void hobby()
+        {
+            for(int i=0;i<3;i++)
+            {
+                if(chkhb.Items[i].Selected==true)
+                {
+                    hb[i] = chkhb.Items[i].Text;
+                }
+            }
+        }
+        public void fillgrid()
+        {
+            getcon();
+            select();
+            GridView1.DataSource = ds.Tables[0];
+            GridView1.DataBind();
+        }
+        public DataSet select()
+        {
+            getcon();
+            da = new SqlDataAdapter("select * from emp", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
+        public DataSet select(int id)
+        {
+            getcon();
+            da = new SqlDataAdapter("select * from emp where Id='"+ViewState["Id"]+"'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
+        public void filltext()
+        {
+            getcon();
+            ds = new DataSet();
+            ds = select(Convert.ToInt32(ViewState["Id"]));
+            txtnm.Text = ds.Tables[0].Rows[0][1].ToString();
+            txtem.Text = ds.Tables[0].Rows[0][2].ToString();
+            if (ds.Tables[0].Rows[0][3].ToString()=="Male")
+            {
+                RadioButtonList1.Items[0].Selected = true;
+                RadioButtonList1.Items[1].Selected = false;
+            }
+            else if(ds.Tables[0].Rows[0][3].ToString() == "Female")
+            {
+                RadioButtonList1.Items[0].Selected = false;
+                RadioButtonList1.Items[1].Selected = true;
+            }
+        }
+    }
+}
